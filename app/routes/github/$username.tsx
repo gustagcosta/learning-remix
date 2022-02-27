@@ -1,5 +1,12 @@
-import { LoaderFunction, useLoaderData } from "remix";
+import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import { GithubContainer, Api, Types } from "~/modules/github";
+import { ErrorLayout } from "~/modules/shared/components/ErrorLayout";
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Github Container"
+  };
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
   return {
@@ -7,8 +14,8 @@ export const loader: LoaderFunction = async ({ params }) => {
   };
 };
 
-export function ErrorBoundary() {
-  return <h1>Houve um erro ao acesar essa página</h1>;
+export function ErrorBoundary({ error }: { error: Error }) {
+  return <ErrorLayout error={error.message} />;
 }
 
 export default function () {

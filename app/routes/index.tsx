@@ -1,4 +1,11 @@
+import { MetaFunction } from "remix";
 import { Layout } from "~/modules/shared";
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Welcome"
+  };
+};
 
 export default function () {
   return (

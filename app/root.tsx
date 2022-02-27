@@ -45,8 +45,8 @@ export function ErrorBoundary({ error }: { error: Error }) {
 // https://remix.run/docs/en/v1/api/conventions#catchboundary
 export function CatchBoundary() {
   let caught = useCatch();
-
   let message;
+  
   switch (caught.status) {
     case 401:
       message = (
