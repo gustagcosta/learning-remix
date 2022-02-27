@@ -1,6 +1,6 @@
 import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import { GithubContainer, Api, Types } from "~/modules/github";
-import { ErrorLayout } from "~/modules/shared/components/ErrorLayout";
+import { ErrorLayout } from "~/modules/shared";
 
 export const meta: MetaFunction = () => {
   return {
