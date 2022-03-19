@@ -22,13 +22,14 @@ function classNames(...classes: string[]) {
 
 interface LayoutProps {
   children: React.ReactNode;
-  title: string
+  title: string;
 }
 
 export function Layout({ title, children }: LayoutProps) {
   const [navigation, setNavigation] = useState([
     { name: "Dashboard", to: "/", current: false },
-    { name: "Github", to: "/github", current: false }
+    { name: "Github", to: "/github", current: false },
+    { name: "Todos", to: "/todos", current: false }
   ]);
 
   const location = useLocation();

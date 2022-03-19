@@ -1,16 +1,16 @@
 import { LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import { GithubContainer, Api, Types } from "~/modules/github";
 import { ErrorLayout } from "~/modules/shared";
+import { TodoIndexPage, TodosApi } from "~/modules/todos";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "Github Container"
+    title: "Todos"
   };
 };
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async () => {
   return {
-    user: await Api.getGithubUserInfoByUsername(params.username)
+    todos: TodosApi.getTodos()
   };
 };
 
@@ -19,7 +19,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
 }
 
 export default function () {
-  const { user } = useLoaderData<Types.LoaderData>();
-
-  return <GithubContainer user={user} />;
+  const { todos } = useLoaderData();
+  return <TodoIndexPage todos={todos} />;
 }
